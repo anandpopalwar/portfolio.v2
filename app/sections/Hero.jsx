@@ -50,8 +50,7 @@ export default function Hero({ isDarkMode }) {
           <div className="flex flex-col items-start md:items-end max-w-3xl w-full">
             {/* Massive Responsive Typography */}
             <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-[6rem] xl:text-[7rem] font-black leading-[0.85] tracking-tighter mb-4 md:mb-5 select-none text-neutral-900">
-              MERN <br />
-              dev
+              MERN Dev
             </h1>
 
             {/* Tagline */}

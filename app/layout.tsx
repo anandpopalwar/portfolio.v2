@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Google_Sans_Code, Google_Sans_Flex } from "next/font/google";
+import { Google_Sans_Code, Google_Sans_Flex } from "next/font/google";
 import "./globals.css";
 
 const googleSansFlex = Google_Sans_Flex({
@@ -16,7 +16,7 @@ const googleSansCode = Google_Sans_Code({
 });
 
 export const metadata: Metadata = {
-  title: "Anand Popalwar Developer Portfolio",
+  title: "Anand Popalwar Portfolio",
   description: "Interactive portfolio with GSAP, Matter.js, and Three.js.",
 };
 
@@ -30,7 +30,9 @@ export default function RootLayout({
       lang="en"
       className={`${googleSansFlex.variable} ${googleSansCode.variable}`}
     >
-      <body className="font-sans antialiased">{children}</body>
+      <body className="font-sans antialiased" cz-shortcut-listen="true">
+        {children}
+      </body>
     </html>
   );
 }

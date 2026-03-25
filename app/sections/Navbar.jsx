@@ -1,11 +1,10 @@
 "use client";
 
-import React from "react"; 
+import React from "react";
 import { Moon, Sun } from "lucide-react";
 import Text from "../components/ui/Text";
 import GlassSurface from "../components/ui/GlassSurface";
 import DraggableSvg from "../components/ui/DraggableSvg";
-
 
 const Navbar = ({ isDarkMode, containerRef }) => {
   return (
@@ -14,7 +13,7 @@ const Navbar = ({ isDarkMode, containerRef }) => {
         width={"100%"}
         height={"auto"}
         borderRadius={50}
-        className="mx-auto backdrop-blur-2xl border p-3 md:p-4 rounded-[1.5rem] md:rounded-[2rem] transition-all bg-black/5 border-black/10 max-w-7xl"
+        className="mx-auto backdrop-blur-2xl border p-3 md:p-4 rounded-[1.5rem] md:rounded-[2rem] transition-all bg-black/5 border-black/10 max-w-7xl py-0"
         saturation={0}
         Displace={50}
         Blur={"100px"}
@@ -31,24 +30,24 @@ const Navbar = ({ isDarkMode, containerRef }) => {
               Anand Popalwar
             </Text>
           </div>
-          <div className="flex gap-3 md:gap-4 items-center text-xs md:text-sm font-black tracking-tighter">
+          <div className="flex gap-3 md:gap-4 items-center text-xs md:text-sm font-bold tracking-tight">
             <div className="hidden sm:flex gap-6 md:gap-8">
               <a
-                href="#projects"
-                className="hover:underline hover:underline-offset-4 transition-colors uppercase"
+                href="#contact"
+                className="hover:underline hover:underline-offset-4 transition-colors"
               >
-                Projects
+                Say Hi 👋
               </a>
             </div>
             <a
-              href="#contact"
-              className={`font-mono px-5 md:px-6 py-2 md:py-2.5 rounded-full text-xs md:text-sm font-black tracking-tighter transition-all hover:scale-105 bg-black text-white hover:bg-blue-600`}
+              href="#projects"
+              className={`px-5 md:px-6 py-2 md:py-2.5 rounded-full text-xs md:text-sm font-semibold tracking-wide transition-all hover:scale-105 bg-black text-white hover:bg-blue-600`}
             >
-              Say Hi 👋
+              Projects
             </a>
           </div>
         </div>
-      </GlassSurface>;
+      </GlassSurface>
       {/* <div
         className={`max-w-7xl mx-auto flex justify-between items-center backdrop-blur-2xl border p-3 md:p-4 rounded-[1.5rem] md:rounded-[2rem] transition-all ${
           isDarkMode
@@ -89,7 +88,6 @@ const Navbar = ({ isDarkMode, containerRef }) => {
       </div> */}
     </nav>
   );
-};;
+};
 
 export default Navbar;
-

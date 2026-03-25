@@ -199,10 +199,10 @@ const ProjectModal = ({ project, onClose }) => {
           height={"h-24"}
           borderRadius={50}
           saturation={0.5}
-          Displace={5}
+          displace={5}
           redOffset={50}
           greenOffset={50}
-          Blur={"30px"}
+          blur={30}
         >
           <div className="w-16 h-16 flex flex-col items-center justify-center gap-1">
             <X className="w-16 h-16 stroke-3" />

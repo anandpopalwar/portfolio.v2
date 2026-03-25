@@ -9,12 +9,7 @@ import TechStack from "./sections/TechStack.jsx";
 import Contact from "./sections/Contact.jsx";
 import StickyFooter from "./sections/StickyFooter.jsx";
 import IndustrialHoverCard from "./components/ui/IndustrialHoverCard";
-// const PhysicsContainer = dynamic(
-//   () => import("../components/canvas/PhysicsContainer"),
-//   { ssr: false },
-// );
-
-// const Scene3D = dynamic(() => import("../components/canvas/Scene3D"), { ssr: false });
+ 
 
 export default function Home() {
   const containerRef = useRef<HTMLDivElement>(null);

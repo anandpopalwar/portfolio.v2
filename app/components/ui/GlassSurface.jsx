@@ -1,3 +1,5 @@
+"use client"
+
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useRef, useState, useId } from "react";
 
@@ -270,7 +272,7 @@ const GlassSurface = ({
     };
 
     const glassSurfaceClasses =
-          `relative flex items-center justify-center overflow-${overflow} transition-opacity duration-[260ms] ease-out`;
+        `relative flex items-center justify-center overflow-${overflow} transition-opacity duration-[260ms] ease-out`;
 
     const focusVisibleClasses = isDarkMode
         ? "focus-visible:outline-2 focus-visible:outline-[#0A84FF] focus-visible:outline-offset-2"
