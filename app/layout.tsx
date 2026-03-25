@@ -1,10 +1,18 @@
 import type { Metadata } from "next";
-import { Geist } from "next/font/google";
+import { Geist, Google_Sans_Code, Google_Sans_Flex } from "next/font/google";
 import "./globals.css";
 
-const geist = Geist({
+const googleSansFlex = Google_Sans_Flex({
   subsets: ["latin"],
-  variable: "--font-geist-sans",
+  axes: ["wdth"],
+  variable: "--font-sans",
+  display: "swap",
+});
+
+const googleSansCode = Google_Sans_Code({
+  subsets: ["latin"],
+  variable: "--font-code",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -18,11 +26,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={geist.variable}>
-      <body
-        className="font-sans antialiased">
-        {children}
-      </body>
+    <html
+      lang="en"
+      className={`${googleSansFlex.variable} ${googleSansCode.variable}`}
+    >
+      <body className="font-sans antialiased">{children}</body>
     </html>
   );
 }

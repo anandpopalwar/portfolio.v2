@@ -1,16 +1,16 @@
 @import "tailwindcss";
 
 @font-face {
-  font-family: 'Google Sans Flex';
-  src: url('/fonts/GoogleSansFlex.woff2') format('woff2');
+  font-family: "Google Sans Flex";
+  src: url("/fonts/GoogleSansFlex.woff2") format("woff2");
   font-weight: 100 900;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Google Sans Code';
-  src: url('/fonts/GoogleSansCode.woff2') format('woff2');
+  font-family: "Google Sans Code";
+  src: url("/fonts/GoogleSansCode.woff2") format("woff2");
   font-weight: 100 900;
   font-style: normal;
   font-display: swap;
@@ -31,6 +31,16 @@
   --color-neutral-800: #3a3936;
   --color-neutral-900: #1c1b19;
   --color-neutral-1000: #000000;
+
+  /* Type scale */
+  --text-display: 52px;
+  --text-h1: 36px;
+  --text-h2: 26px;
+  --text-h3: 18px;
+  --text-body: 15px;
+  --text-small: 13px;
+  --text-label: 11px;
+  --text-code: 12px;
 }
 
 @layer base {
@@ -82,6 +92,43 @@
   .animate-marquee {
     animation: marquee 30s linear infinite;
   }
+
+  /* Mobile base is already set via fontSize tokens above */
+  @screen md {
+    .text-display {
+      font-size: 72px;
+    }
+
+    .text-h1 {
+      font-size: 48px;
+    }
+
+    .text-h2 {
+      font-size: 32px;
+    }
+
+    .text-h3 {
+      font-size: 20px;
+    }
+  }
+
+  @screen lg {
+    .text-display {
+      font-size: 96px;
+    }
+
+    .text-h1 {
+      font-size: 56px;
+    }
+
+    .text-h2 {
+      font-size: 36px;
+    }
+
+    .text-h3 {
+      font-size: 22px;
+    }
+  }
 }
 
 @keyframes marquee {
@@ -93,7 +140,6 @@
     transform: translateX(-50%);
   }
 }
-
 
 .counter {
   font-size: 16px;
@@ -140,7 +186,8 @@
     z-index: 1;
     top: 34px;
     height: 28px;
-    transform: perspective(2000px) rotateZ(300deg) rotateX(44deg) rotateY(39deg) scale(1.4);
+    transform: perspective(2000px) rotateZ(300deg) rotateX(44deg) rotateY(39deg)
+      scale(1.4);
   }
 
   .vite {
@@ -148,7 +195,8 @@
     top: 107px;
     height: 26px;
     width: auto;
-    transform: perspective(2000px) rotateZ(300deg) rotateX(40deg) rotateY(39deg) scale(0.8);
+    transform: perspective(2000px) rotateZ(300deg) rotateX(40deg) rotateY(39deg)
+      scale(0.8);
   }
 }
 
@@ -171,7 +219,7 @@
   border-top: 1px solid var(--border);
   text-align: left;
 
-  &>div {
+  & > div {
     flex: 1 1 0;
     padding: 32px;
 
@@ -266,7 +314,7 @@
 
   &::before,
   &::after {
-    content: '';
+    content: "";
     position: absolute;
     top: -4.5px;
     border: 5px solid transparent;

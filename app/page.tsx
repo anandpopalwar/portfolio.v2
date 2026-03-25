@@ -8,6 +8,7 @@ import Hero from "./sections/Hero.jsx";
 import TechStack from "./sections/TechStack.jsx";
 import Contact from "./sections/Contact.jsx";
 import StickyFooter from "./sections/StickyFooter.jsx";
+import IndustrialHoverCard from "./components/ui/IndustrialHoverCard";
 // const PhysicsContainer = dynamic(
 //   () => import("../components/canvas/PhysicsContainer"),
 //   { ssr: false },
@@ -33,11 +34,13 @@ export default function Home() {
         <Hero isDarkMode={false} />
         <TechStack />
         <ProjectShowcase />
+
+        {/* <IndustrialHoverCard /> */}
         <Contact />
       </div>
       {/* Spacer for ScrollTrigger room */}
       <div className="h-50" aria-hidden="true" />
-      
+
       <StickyFooter />
     </main>
   );

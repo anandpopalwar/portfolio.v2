@@ -1,15 +1,12 @@
 "use client";
 
 import { useRef } from "react";
-import {
-  ArrowRight,
-
-} from "lucide-react";
+import { ArrowRight } from "lucide-react";
 // import self from "../assets/anand_crop.png";
 import self from "../assets/me.png";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
-import { ScrollTrigger } from "gsap/ScrollTrigger"; 
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
 gsap.registerPlugin(ScrollTrigger);
 
@@ -54,7 +51,7 @@ export default function Hero({ isDarkMode }) {
             {/* Massive Responsive Typography */}
             <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-[6rem] xl:text-[7rem] font-black leading-[0.85] tracking-tighter mb-4 md:mb-5 select-none text-neutral-900">
               MERN <br />
-              developer
+              dev
             </h1>
 
             {/* Tagline */}

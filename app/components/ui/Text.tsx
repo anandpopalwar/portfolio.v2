@@ -72,11 +72,11 @@ export const Text: React.FC<TextProps> = ({
   // Use createElement to avoid TS inferring an overly-narrow polymorphic component type.
   // This component is intentionally "polymorphic", so we keep typing permissive here.
   return React.createElement(
-    Component as any,
+    Component as unknown as React.ElementType,
     {
       className: composedClassName,
       style: customStyles,
-      ...(props as any),
+      ...(props as unknown as Record<string, unknown>),
     },
     children,
   );
