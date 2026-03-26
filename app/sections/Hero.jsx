@@ -49,7 +49,7 @@ export default function Hero({ isDarkMode }) {
         <div className="relative z-10 w-full flex flex-col items-start md:items-end text-left md:text-right space-y-6 md:space-y-8 mt-16 md:mt-0">
           <div className="flex flex-col items-start md:items-end max-w-3xl w-full">
             {/* Massive Responsive Typography */}
-            <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-[6rem] xl:text-[7rem] font-black leading-[0.85] tracking-tighter mb-4 md:mb-5 select-none text-neutral-900">
+            <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-[6rem] xl:text-[7rem] font-bold leading-[0.85] tracking-tighter mb-4 md:mb-5 select-none text-neutral-900">
               MERN Dev
             </h1>
 

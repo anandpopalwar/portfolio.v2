@@ -72,9 +72,9 @@ export default function SocialIcon({
       target="_blank"
       rel="noreferrer"
       aria-label={ariaLabel}
-      className={`relative flex items-center justify-center w-12 h-12 rounded-full backdrop-blur-md border transition-colors shadow-sm ${themeClasses} ${className}`}
+      className={`relative flex items-center justify-center rounded-full backdrop-blur-md border transition-all shadow-sm ${themeClasses} ${className}`}
     >
-      <span className="w-5 h-5 flex items-center justify-center pointer-events-none">
+      <span className="w-[45%] h-[45%] flex items-center justify-center pointer-events-none">
         {icon}
       </span>
     </a>

@@ -16,7 +16,6 @@ const ProjectModal = ({ project, onClose }) => {
 
   // Split tags into two rows for independent marquees
   const firstRowTags = project.tags;
-  const secondRowTags = project.tags;
 
   const closeAnimation = () => {
     if (!gsap) {
@@ -29,10 +28,10 @@ const ProjectModal = ({ project, onClose }) => {
     });
 
     tl.to(contentRef.current, {
-      scale: 1.05,
+      y: 100,
       opacity: 0,
-      duration: 0.3,
-      ease: "power4.in",
+      duration: 0.4,
+      ease: "power2.in",
     });
 
     tl.to(
@@ -139,41 +138,41 @@ const ProjectModal = ({ project, onClose }) => {
     };
   }, []);
 
-  useLayoutEffect(() => {
-    const setupBoundedAnimation = (index) => {
-      const container = containerRefs.current[index];
-      const row = rowRefs.current[index];
-      if (!container || !row) return;
+  // useLayoutEffect(() => {
+  //   const setupBoundedAnimation = (index) => {
+  //     const container = containerRefs.current[index];
+  //     const row = rowRefs.current[index];
+  //     if (!container || !row) return;
 
-      const containerWidth = container.offsetWidth;
-      const contentWidth = row.scrollWidth;
-      const maxTranslate = contentWidth - containerWidth;
+  //     const containerWidth = container.offsetWidth;
+  //     const contentWidth = row.scrollWidth;
+  //     const maxTranslate = contentWidth - containerWidth;
 
-      if (maxTranslate <= 0) return; // No animation needed if content fits
+  //     if (maxTranslate <= 0) return; // No animation needed if content fits
 
-      const startX = -maxTranslate / 2; // Center content initially
-      const isFirstRow = index === 0;
-      const targetX = isFirstRow ? 0 : -maxTranslate;
+  //     const startX = -maxTranslate / 2; // Center content initially
+  //     const isFirstRow = index === 0;
+  //     const targetX = isFirstRow ? 0 : -maxTranslate;
 
-      marqueeTweens.current[index] = gsap.fromTo(
-        row,
-        { x: startX },
-        {
-          x: targetX,
-          duration: 20,
-          ease: "none",
-          repeat: -1,
-          yoyo: true,
-        },
-      );
-    };
+  //     marqueeTweens.current[index] = gsap.fromTo(
+  //       row,
+  //       { x: startX },
+  //       {
+  //         x: targetX,
+  //         duration: 20,
+  //         ease: "none",
+  //         repeat: -1,
+  //         yoyo: true,
+  //       },
+  //     );
+  //   };
 
-    [0, 1].forEach(setupBoundedAnimation);
+  //   [0, 1].forEach(setupBoundedAnimation);
 
-    return () => {
-      marqueeTweens.current.forEach((tween) => tween?.kill());
-    };
-  }, [project]);
+  //   return () => {
+  //     marqueeTweens.current.forEach((tween) => tween?.kill());
+  //   };
+  // }, [project]);
 
   if (!project) return null;
 
@@ -222,7 +221,7 @@ const ProjectModal = ({ project, onClose }) => {
       <div
         ref={contentRef}
         tabIndex="-1"
-        className="relative w-full sm:max-w-2xl lg:max-w-[700px] bg-[#ffffff] rounded-t-[40px] sm:rounded-[40px] shadow-2xl overflow-hidden flex flex-col max-h-[95vh] sm:max-h-[85vh] md:cursor-none focus:outline-none"
+        className="relative w-full sm:max-w-2xl lg:max-w-[700px] bg-neutral-50 rounded-t-[40px] sm:rounded-[40px] shadow-2xl overflow-hidden flex flex-col max-h-[95vh] sm:max-h-[85vh] md:cursor-none focus:outline-none"
         onClick={(e) => {
           if (window.innerWidth < 768) {
             e.stopPropagation();
@@ -234,7 +233,7 @@ const ProjectModal = ({ project, onClose }) => {
         <div className="w-full flex justify-end p-6 pb-0 shrink-0 hidden">
           <button
             onClick={closeAnimation}
-            className="w-10 h-10 sm:w-12 sm:h-12 bg-zinc-50 hover:bg-[#050505] border border-zinc-200 hover:border-[#050505] rounded-full flex items-center justify-center text-[#050505] hover:text-white transition-colors duration-300 shadow-sm"
+            className="w-10 h-10 sm:w-12 sm:h-12 bg-neutral-50 hover:bg-[#050505] border border-neutral-200 hover:border-[#050505] rounded-full flex items-center justify-center text-[#050505] hover:text-neutral-50 transition-colors duration-300 shadow-sm"
             aria-label="Close modal"
           >
             <X className="w-5 h-5 sm:w-6 sm:h-6" />
@@ -246,17 +245,15 @@ const ProjectModal = ({ project, onClose }) => {
           {/* Title */}
           <h3
             ref={(el) => (itemsRef.current[0] = el)}
-            className="text-[clamp(2.5rem,7vw,5rem)] font-black uppercase tracking-tighter leading-[0.85] mb-4 text-black"
-            style={{ fontFamily: "'Inter', sans-serif", opacity: 0 }}
+            className="text-neutral-900 font-sans text-h2 sm:text-h2 md:text-h1 lg:text-[3rem] font-semibold tracking-tighter transition-colors duration-500 select-none truncate mt-0 mb-1 leading-tight"
+          // style={{ fontFamily: "'Inter', sans-serif", opacity: 0 }}
           >
             {project.title}
           </h3>
-
-          {/* Badge (Role) */}
           <div
             ref={(el) => (itemsRef.current[1] = el)}
-            className="text-blue-600 font-bold uppercase tracking-widest text-sm md:text-base mb-4 block pl-2 md:pl-4"
-            style={{ opacity: 0 }}
+            className="tracking-normal transition-colors duration-500 text-[10px] sm:text-xs md:text-sm w-fit pointer-events-none flex justify-center align-middle items-center gap-2 border border-neutral-800 bg-neutral-800  text-neutral-50 px-3 pt-1 pb-0.5 sm:px-4 sm:pt-1 sm:pb-0.5  font-semibold rounded-full cursor-default select-none whitespace-nowrap group mt-1 mb-1"
+            style={{ fontFamily: "'Google Sans Code', monospace" }}
           >
             {project.role}
           </div>
@@ -264,33 +261,19 @@ const ProjectModal = ({ project, onClose }) => {
           {/* Tech Chip Marquee */}
           <div
             ref={(el) => (itemsRef.current[2] = el)}
-            className="flex flex-col overflow-hidden"
+            className="flex flex-col overflow-hidden mt-1"
             style={{ opacity: 0 }}
           >
             {/* First Row Marquee */}
             <div
               ref={(el) => (containerRefs.current[0] = el)}
-              className="marquee-row overflow-hidden h-fit p-2"
+              className="marquee-row overflow-hidden h-fit  p-2 px-0"
             >
               <div
                 ref={(el) => (rowRefs.current[0] = el)}
-                className="marquee-content flex flex-nowrap gap-2 sm:gap-3"
+                className="marquee-content flex flex-wrap gap-2 sm:gap-3 "
               >
                 {firstRowTags.map((tag, idx) => (
-                  <TechChip key={idx} tag={tag} />
-                ))}
-              </div>
-            </div>
-            {/* Second Row Marquee */}
-            <div
-              ref={(el) => (containerRefs.current[1] = el)}
-              className="marquee-row overflow-hidden h-fit p-2"
-            >
-              <div
-                ref={(el) => (rowRefs.current[1] = el)}
-                className="marquee-content flex flex-nowrap gap-2 sm:gap-3"
-              >
-                {secondRowTags.map((tag, idx) => (
                   <TechChip key={idx} tag={tag} />
                 ))}
               </div>
@@ -300,16 +283,16 @@ const ProjectModal = ({ project, onClose }) => {
           {/* Bullet List */}
           <ul
             ref={(el) => (itemsRef.current[3] = el)}
-            className="space-y-5 pl-5 list-outside border-t border-zinc-100 pt-8"
+            className="space-y-5 pl-5 list-outside   pt-8"
             style={{ opacity: 0 }}
           >
             {project.desc.map((d, idx) => (
               <li
                 key={idx}
-                className="text-sm sm:text-base text-[#050505] leading-relaxed relative flex items-start"
+                className="text-sm sm:text-base text-neutral-500 leading-relaxed relative flex items-start"
               >
-                <span className="absolute -left-5 top-2 w-2 h-2 rounded-full bg-[#2563eb] shrink-0 shadow-sm"></span>
-                <span className="font-medium">{d}</span>
+                <span className="absolute -left-5 top-2 w-2 h-2 rounded-full bg-blue-500 shrink-0 shadow-sm"></span>
+                <span className="text-sm sm:text-base font-medium">{d}</span>
               </li>
             ))}
           </ul>

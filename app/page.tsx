@@ -8,8 +8,7 @@ import Hero from "./sections/Hero.jsx";
 import TechStack from "./sections/TechStack.jsx";
 import Contact from "./sections/Contact.jsx";
 import StickyFooter from "./sections/StickyFooter.jsx";
-import IndustrialHoverCard from "./components/ui/IndustrialHoverCard";
- 
+import IndustrialHoverCard from "./components/ui/IndustrialHoverCard"; 
 
 export default function Home() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -17,7 +16,7 @@ export default function Home() {
   return (
     <main
       ref={containerRef}
-      className={`min-h-screen font-sans transition-colors duration-700  bg-[#ffffff] text-black overflow-hidden`}
+      className={`min-h-screen font-sans transition-colors duration-700  bg-neutral-0 text-black overflow-hidden`}
     >
       <div className="fixed inset-0 pointer-events-none -z-10 opacity-20">
         <div className="absolute top-[-20%] left-[-10%] w-[60%] h-[60%] bg-blue-600 blur-[80px] md:blur-[150px] rounded-full" />
@@ -25,12 +24,10 @@ export default function Home() {
       </div>
 
       <Navbar {...{ isDarkMode: false, containerRef }} />
-      <div className={`relative z-10 px-0  bg-[#ffffff]`}>
+      <div className={`relative z-10 px-0 bg-neutral-0`}>
         <Hero isDarkMode={false} />
         <TechStack />
         <ProjectShowcase />
-
-        {/* <IndustrialHoverCard /> */}
         <Contact />
       </div>
       {/* Spacer for ScrollTrigger room */}

@@ -2,21 +2,9 @@
 
 import React, { useRef, useEffect, useState, useCallback } from "react";
 import { gsap } from "gsap";
-import {
-  Map,
-  MapPin,
-  Printer,
-  BarChart3,
-  Lock,
-  Globe,
-  X,
-  Sparkles,
-  Wifi,
-} from "lucide-react";
+import { Map, MapPin, Printer, Lock, Wifi } from "lucide-react";
 import StackIcon from "tech-stack-icons";
 import ProjectModal from "../components/ui/ProjectModal";
-// import { AxiosIcon, ChartjsIcon } from "../components/ui/SocialIcon";
-import OverlapImage from "../components/ui/OverlapImage";
 
 // Import project images
 import gmr_dumper_truck from "../assets/project_imges/gmr_dumper_truck.png";
@@ -26,6 +14,8 @@ import glove from "../assets/project_imges/glove.png";
 import camera from "../assets/project_imges/Camera.png";
 import conveyor from "../assets/project_imges/conveyor.png";
 import open_box from "../assets/project_imges/open_box.png";
+import OverlapImage from "../components/ui/OverlapImage";
+import Sectioncontainer from "./Sectioncontainer";
 // import TechChip from "../components/ui/Techchip";
 
 const LucideIcon = ({ name }) => {
@@ -34,7 +24,7 @@ const LucideIcon = ({ name }) => {
       return (
         <StackIcon
           name="react"
-          className="w-4 h-4 sm:w-5 sm:h-5 grayscale-0 rounded-full bg-white"
+          className="w-4 h-4 sm:w-5 sm:h-5 grayscale-0 rounded-full bg-neutral-50"
         />
       );
     case "typescript":
@@ -47,7 +37,7 @@ const LucideIcon = ({ name }) => {
       return (
         <StackIcon
           name="socketio"
-          className="w-4 h-4 sm:w-5 sm:h-5 bg-white rounded-full"
+          className="w-4 h-4 sm:w-5 sm:h-5 bg-neutral-50 rounded-full"
         />
       );
     case "docker":
@@ -56,7 +46,7 @@ const LucideIcon = ({ name }) => {
       return (
         <StackIcon
           name="git"
-          className="w-4 h-4 sm:w-5 sm:h-5 bg-white rounded-full"
+          className="w-4 h-4 sm:w-5 sm:h-5 bg-neutral-50 rounded-full"
         />
       );
   }
@@ -226,23 +216,11 @@ export default function ProjectShowcase() {
   }, []);
 
   return (
-    <section
-      ref={containerRef}
+    <Sectioncontainer
+      containerRef={containerRef}
+      title="Projects"
       id="projects"
-      className={`relative w-full pt-16 pb-8 md:pt-28 md:pb-14 px-4 md:px-8 lg:px-16 bg-[#ffffff]`}
     >
-      {/* Section Header */}
-      <div className="max-w-7xl mx-auto mb-4 md:mb-6">
-        <div className="flex items-center justify-start border-b-2 border-zinc-100 pb-2">
-          <h2
-            className="text-2xl sm:text-2xl md:text-3xl lg:text-[3rem] font-black uppercase tracking-tighter leading-none text-[#050505] underline underline-offset-8"
-            style={{ fontFamily: "'Inter', sans-serif" }}
-          >
-            Projects
-          </h2>
-        </div>
-      </div>
-
       {/* Project Rows */}
       <div
         className="max-w-7xl mx-auto relative z-10"
@@ -262,15 +240,14 @@ export default function ProjectShowcase() {
             >
               {/* Row Header */}
               <div
-                className={`group grid grid-cols-1 md:grid-cols-3 items-center gap-4 md:gap-8 py-8 md:py-14 transition-all duration-500 ${
-                  isDimmed ? "opacity-20 grayscale" : "opacity-100"
-                } ${isActive ? "bg-zinc-50/80 -mx-4 px-4 rounded-[32px]" : ""}`}
+                className={`group grid grid-cols-1 md:grid-cols-3 items-center gap-4 md:gap-8 py-8 md:py-14 transition-all duration-500 ${isDimmed ? "opacity-20 grayscale" : "opacity-100"
+                  } ${isActive ? "bg-zinc-50/80 -mx-4 px-4 rounded-[32px]" : ""}`}
               >
                 {/* Title and Content Area (2 columns) */}
                 <div className="md:col-span-2 flex flex-col gap-2 md:gap-3 justify-center min-w-0">
                   <h3
                     ref={(el) => (titleRefs.current[i] = el)}
-                    className="text-2xl sm:text-2xl md:text-3xl lg:text-[3.4rem] font-semibold tracking-tighter leading-none transition-colors duration-500 select-none truncate leading-relaxed"
+                    className="text-2xl sm:text-2xl md:text-3xl lg:text-[3.4rem] font-semibold tracking-tighter transition-colors duration-500 select-none truncate leading-relaxed"
                     style={{
                       fontFamily: "'Inter', sans-serif",
                       color: isActive ? ACCENT : "#050505",
@@ -280,9 +257,9 @@ export default function ProjectShowcase() {
                   </h3>
 
                   <div className="font-normal tracking-normal transition-colors duration-500">
-                    <div className="w-fit pointer-events-none flex items-center gap-2 border border-zinc-400 bg-white text-neutral-700 px-4 py-1 text-[14px] font-bold transition-colors rounded-full cursor-default select-none whitespace-nowrap group ">
+                    <div className="text-[10px] sm:text-xs md:text-sm w-fit pointer-events-none flex items-center gap-2 border border-neutral-400  text-neutral-700 px-3 py-0.5 sm:px-4 sm:py-1 font-bold transition-colors rounded-full cursor-default select-none whitespace-nowrap group ">
                       <span
-                        className="leading-[1.7] mt-[-1px]"
+                        // className="leading-[1.7] mt-[-1px]"
                         style={{ fontFamily: "'Google Sans Code', monospace" }}
                       >
                         {project.role}
@@ -290,12 +267,14 @@ export default function ProjectShowcase() {
                     </div>
                   </div>
                   {/* Description Highlights */}
-                  <span className="w-3/4 mt-2 space-y-1 md:space-y-1.5 transition-opacity duration-500 text-xs md:text-sm text-zinc-500 tracking-tight font-medium line-clamp-2">
+                  <span className="w-3/4 mt-2 space-y-1 md:space-y-1.5 transition-opacity duration-500 text-xs md:text-sm text-neutral-500 tracking-tight font-medium line-clamp-2">
                     {project?.tldr}
                   </span>
                 </div>
                 {/* OverlapImage Area (1 column) */}
-                <div className="md:col-span-1 flex items-center justify-center w-full opacity-70 md:opacity-100 pointer-events-none md:pointer-events-auto">
+                <div
+                  className={`hidden md:flex md:col-span-1 items-center justify-center w-full transition-all duration-500 transform ${isActive ? "opacity-100 scale-100" : "opacity-0 scale-90 pointer-events-none"}`}
+                >
                   <OverlapImage
                     imgs={project.overlapImgs}
                     isActive={isActive}
@@ -314,7 +293,7 @@ export default function ProjectShowcase() {
           onClose={() => setSelectedProject(null)}
         />
       )}
-    </section>
+    </Sectioncontainer>
   );
 }
 // {/* OverlapImage for the project */ }

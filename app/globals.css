@@ -94,7 +94,7 @@
   }
 
   /* Mobile base is already set via fontSize tokens above */
-  @screen md {
+  /* @screen md {
     .text-display {
       font-size: 72px;
     }
@@ -128,7 +128,7 @@
     .text-h3 {
       font-size: 22px;
     }
-  }
+  } */
 }
 
 @keyframes marquee {

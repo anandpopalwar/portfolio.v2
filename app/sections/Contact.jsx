@@ -1,7 +1,7 @@
-import StackIcon from "tech-stack-icons";
 import SocialIcon from "../components/ui/SocialIcon";
 import { ArrowUpRight, FileDown } from "lucide-react";
 import { GitHub, LinkedIn, Mail } from "@deemlol/next-icons";
+import Sectioncontainer from "./Sectioncontainer";
 
 const socials = [
   {
@@ -28,56 +28,65 @@ const socials = [
 
 export default function Contact() {
   return (
-    <section
-      id="contact"
-      className="relative z-10 bg-[#ffffff] text-[#050505] py-20 lg:py-32 overflow-hidden border-t border-zinc-100 font-sans"
+    <Sectioncontainer title="Let's connect" sectionId="contact" extraClassName="mx-auto" border={false}
+      headerAlignment="center"
     >
-      <div className="w-full max-w-[1400px] mx-auto px-6 lg:px-12">
-        {/* MASSIVE TYPOGRAPHY HEADLINE */}
-        {/* {"OPEN TO WORK".split(" ").map((word) => (
-          <AnimatedHeading
-            title={word}
-            className="mb-4 lg:mb-8 w-full flex flex-col items-center lg:items-start text-center lg:text-left"
-          />
-        ))} */}
+      <div className="max-w-7xl mx-auto  z-10 flex flex-col gap-4 pb-0">
+        <span className="text-sm sm:text-base font-medium text-code tracking-tight text-neutral-600 text-center">
+          Open for Collaboration
+        </span>
 
-        <h1
-          className="text-4xl sm:text-5xl md:text-7xl lg:text-[6rem] font-black uppercase tracking-tighter leading-none text-[#050505] underline underline-offset-8 mb-12 lg:mb-16 w-full text-center"
-          style={{ fontFamily: "'Inter', sans-serif" }}
+        {/* Social Icons Grid */}
+        <div className="flex gap-4 sm:gap-6 w-full justify-center">
+          {socials.map(({ Icon, label, href, hoverClass }) => (
+            <SocialIcon
+              key={label}
+              href={href}
+              ariaLabel={label}
+              icon={Icon}
+              lightMode={true}
+              className={`w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 ${hoverClass}`}
+            />
+          ))}
+        </div>
+
+        {/* Download Resume Button */}
+        <button
+          onClick={() =>
+            window.open("https://www.github.com/anandpopalwar", "_blank")
+          }
+          className="w-fit mx-auto group mt-2 flex justify-center items-center gap-1.5 px-2.5 py-1 sm:px-8 sm:py-3 rounded-full bg-neutral-900 text-neutral-50 text-[10px] sm:text-xs md:text-sm font-semibold tracking-wide uppercase transition-all duration-300 hover:bg-neutral-50 hover:text-neutral-900 border-2 border-neutral-900 hover:shadow-[0_4px_20px_rgba(0,0,0,0.15)] hover:scale-105 cursor-pointer "
         >
-          open to work
-        </h1>
-        <div className="flex flex-col items-center w-full max-w-md mx-auto space-y-8">
-          <h2 className="text-2xl sm:text-3xl font-black uppercase tracking-tight text-[#050505] text-center w-full">
-            Let's Connect
-          </h2>
-          {/* Social Icons Grid */}
-          <div className="grid grid-cols-3 gap-4 sm:gap-6 w-full max-w-[280px] sm:max-w-none justify-items-center">
-            {socials.map(({ Icon, label, href, hoverClass }) => (
-              <SocialIcon
-                key={label}
-                href={href}
-                ariaLabel={label}
-                icon={Icon}
-                lightMode={true}
-                className={`w-16 h-16 sm:w-20 sm:h-20 ${hoverClass}`}
-              />
-            ))}
-          </div>
+          <FileDown className="w-2 h-2 sm:w-5 sm:h-5 transition-transform duration-300" />
+          <span className="mt-1">
 
-          {/* Download Resume Button */}
-          <button
-            onClick={() =>
-              window.open("https://www.github.com/anandpopalwar", "_blank")
-            }
-            className="group mt-2 flex items-center gap-3 px-10 py-4 rounded-full bg-[#050505] text-white text-base font-semibold tracking-wide uppercase transition-all duration-300 hover:bg-white hover:text-[#050505] border-2 border-[#050505] hover:shadow-[0_4px_20px_rgba(0,0,0,0.15)] hover:scale-105 cursor-pointer"
+            Download Resume
+          </span>
+          <ArrowUpRight className="w-2 h-2 sm:w-5 sm:h-5 opacity-0 transition-all duration-300 group-hover:opacity-100" />
+        </button>
+      </div>
+    </Sectioncontainer>
+  );
+}
+{
+  /* <section
+  id="contact"
+  className="relative z-10  text-neutral-900 py-20 lg:py-32 overflow-hidden border-t border-zinc-100 font-sans"
+>
+  <div className="w-full max-w-[1400px] mx-auto px-6 lg:px-12">
+    <div className="flex flex-col items-start w-full space-y-8">
+      <div className="max-w-7xl mb-4 md:mb-6">
+        <div className="flex justify-start border-b-2 border-zinc-100 pb-2">
+          <h2
+            className="text-2xl sm:text-2xl md:text-3xl lg:text-[3rem] font-black uppercase tracking-tighter leading-none text-neutral-900 underline underline-offset-8"
+            style={{ fontFamily: "'Inter', sans-serif" }}
           >
-            <FileDown className="w-6 h-6 transition-transform duration-300 group-hover:-translate-y-0.5" />
-            <span>Grab Resume</span>
-            <ArrowUpRight className="w-5 h-5 opacity-0 -translate-x-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0" />
-          </button>
+            Let's connect
+          </h2>
         </div>
       </div>
-    </section>
-  );
+
+    </div>
+  </div>
+</section> */
 }
