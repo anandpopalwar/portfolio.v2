@@ -302,11 +302,10 @@ const ProjectModal = ({ project, onClose }) => {
           <button
             ref={(el) => (itemsRef.current[4] = el)}
             onClick={closeAnimation}
-            className="flex md:hidden mx-auto mt-12 mb-4 items-center justify-center gap-2 px-8 py-3 sm:px-10 sm:py-3.5 text-[#050505] hover:text-white bg-white hover:bg-[#050505] border border-zinc-200 hover:border-[#050505] rounded-full font-black uppercase tracking-widest text-[10px] sm:text-xs transition-colors duration-300 focus:outline-none shadow-[0_8px_30px_-5px_rgba(0,0,0,0.15)]"
+            className="flex md:hidden mx-auto mt-12 mb-4 items-center justify-center   p-3 md:p-2  cursor-pointer text-neutral-50 bg-neutral-1000 border border-neutral-50 text-label rounded-full font-semibold uppercase tracking-widest  md:text-xs transition-colors duration-300 focus:outline-none shadow-[0_8px_30px_-5px_rgba(0,0,0,0.15)]"
             style={{ opacity: 0 }}
           >
             <X className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
-            CLOSE
           </button>
         </div>
       </div>
