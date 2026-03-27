@@ -1,10 +1,12 @@
+"use client";
+
 import Image from "next/image";
 
 const OverlapImage = ({ imgs, isActive, accentColor = "#2563eb" }) => {
   if (!imgs || !Array.isArray(imgs) || imgs.length === 0) return null;
 
   return (
-    <div className="relative w-full min-h-min flex items-center justify-center py-2">
+    <div className="relative w-full h-min min-h-min flex items-center justify-center py-0 bg-transparent transition-colors duration-500">
       <style>
         {`
         .sticker-container {
@@ -13,62 +15,65 @@ const OverlapImage = ({ imgs, isActive, accentColor = "#2563eb" }) => {
           align-items: center;
           justify-content: center;
           position: relative;
+          width: 100%;
+          // height: 250px;
         }
 
         .sticker {
           position: absolute;
-          transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.25),
-                      filter 0.3s ease,
-                      opacity 0.3s ease;
+          bottom: 0px;
+          transition: all var(--duration) var(--spring-easing);
+          transition-delay: var(--delay);
           cursor: pointer;
-          filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));
-          will-change: transform;
+          will-change: transform; 
+        }
+
+        .sticker:hover {
+          // filter: brightness(1.05);
         }
 
         .sticker img {
-          transition: all 0.5s ease;
-        }
-
-        .color-overlay {
-          position: absolute;
-          inset: 0;
-          opacity: 0;
-          transition: opacity 0.5s ease;
-          mix-blend-mode: color;
-          pointer-events: none;
-        }
-
-        .sticker.active .color-overlay {
-          opacity: 1;
+          transition: transform 0.5s ease;
         }
         `}
       </style>
 
-      <div className="sticker-container w-full max-w-sm h-full">
+      <div className="sticker-container h-min">
         {imgs.map((img, index) => {
           const middle = (imgs.length - 1) / 2;
 
-          const spread = isActive ? 100 : 70;
-          const rotation = (index - middle) * 15;
-          const xOffset = (index - middle) * spread;
+          const spread = 100;
+          const xOffset = (index - middle) * spread
 
-          // ✅ CENTER-OUT STAGGER DELAY
-          const delay = Math.abs(index - middle) * 80;
+          // Now controlled by external isActive prop
+          const yOffset = isActive ? 70 : 150;
+          const rotation = (index - middle) * 6;
+
+          const calculateDelay = () => {
+            if (!isActive) return 0;
+            const step = 0.1;
+            if (index === middle) return 0;
+            if (index < middle) return (middle - index) * step;
+            const leftSideItems = Math.ceil(middle);
+            return (index - middle) * step + leftSideItems * step;
+          };
+
+          const delay = calculateDelay();
 
           return (
             <div
               key={index}
-              className={`sticker w-28 h-28 sm:w-28 sm:h-28 md:w-40 md:h-40 rounded-2xl overflow-hidden border-none active `}
+              className={`sticker w-28 h-28 sm:w-28 sm:h-28 md:w-40 md:h-40 overflow-hidden`}
               style={{
-                transform: `translateX(${xOffset}px)`,
-                zIndex: index,
-                transitionDelay: `${delay}ms`, // 👈 ONLY NEW LINE THAT MATTERS
+                "--delay": `${delay}s`,
+                transform: `translateX(${xOffset}px) translateY(${yOffset}px) rotate(${rotation}deg)`,
+                zIndex: 10 + Math.round(10 - Math.abs(index - middle)),
               }}
             >
               <Image
                 src={img}
                 alt={`Sticker ${index + 1}`}
-                className="w-full h-full object-contain grayscale opacity-70"
+                className={`w-full h-full object-contain grayscale  ${isActive ? "scale-105" : "scale-100"}`}
               />
             </div>
           );

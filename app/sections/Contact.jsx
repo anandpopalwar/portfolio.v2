@@ -6,8 +6,6 @@ import Sectioncontainer from "./Sectioncontainer";
 const socials = [
   {
     Icon: <LinkedIn size={128} className="w-5 h-5" strokeWidth={1.5} />,
-
-    // <StackIcon name="linkedin"  variant="dark" />,
     label: "LinkedIn",
     href: "https://www.linkedin.com/in/anandpopalwar",
     hoverClass: "hover:bg-[#0077b5] hover:border-[#0077b5] hover:text-white",
@@ -16,7 +14,6 @@ const socials = [
     Icon: <Mail size={128} className="w-5 h-5" strokeWidth={1.5} />,
     label: "Email",
     href: "mailto:anandpopalwar444@gmail.com",
-    // hoverClass: "hover:bg-white hover:border-black hover:text-black",
   },
   {
     Icon: <GitHub size={128} className="w-5 h-5" strokeWidth={1.5} />,
@@ -28,13 +25,17 @@ const socials = [
 
 export default function Contact() {
   return (
-    <Sectioncontainer title="Let's connect" sectionId="contact" extraClassName="mx-auto" border={false}
+    <Sectioncontainer
+      title="Taking on Work"
+      sectionId="contact"
+      extraClassName="mx-auto"
+      border={false}
       headerAlignment="center"
     >
-      <div className="max-w-7xl mx-auto  z-10 flex flex-col gap-4 pb-0">
-        <span className="text-sm sm:text-base font-medium text-code tracking-tight text-neutral-600 text-center">
+      <div className="max-w-7xl mx-auto  z-10 flex flex-col gap-4 pb-8">
+        {/* <span className="text-sm sm:text-base font-medium text-code tracking-tight text-neutral-600 text-center">
           Open for Collaboration
-        </span>
+        </span> */}
 
         {/* Social Icons Grid */}
         <div className="flex gap-4 sm:gap-6 w-full justify-center">
@@ -53,16 +54,15 @@ export default function Contact() {
         {/* Download Resume Button */}
         <button
           onClick={() =>
-            window.open("https://www.github.com/anandpopalwar", "_blank")
+            window.open(
+              "https://docs.google.com/document/d/1qkHG5Kzpz5E76onUnKOnKLS1pVfMrRWYGhwy32CoPac/edit?usp=sharing",
+              "_blank",
+            )
           }
           className="w-fit mx-auto group mt-2 flex justify-center items-center gap-1.5 px-2.5 py-1 sm:px-8 sm:py-3 rounded-full bg-neutral-900 text-neutral-50 text-[10px] sm:text-xs md:text-sm font-semibold tracking-wide uppercase transition-all duration-300 hover:bg-neutral-50 hover:text-neutral-900 border-2 border-neutral-900 hover:shadow-[0_4px_20px_rgba(0,0,0,0.15)] hover:scale-105 cursor-pointer "
         >
-          <FileDown className="w-2 h-2 sm:w-5 sm:h-5 transition-transform duration-300" />
-          <span className="mt-1">
-
-            Download Resume
-          </span>
-          <ArrowUpRight className="w-2 h-2 sm:w-5 sm:h-5 opacity-0 transition-all duration-300 group-hover:opacity-100" />
+          <ArrowUpRight className="w-3 h-3 md:w-5 md:h-5 transition-all duration-300 opacity-100" />
+          <span className="mt-0 md:mt-1">Download Resume</span>
         </button>
       </div>
     </Sectioncontainer>

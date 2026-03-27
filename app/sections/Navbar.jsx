@@ -1,19 +1,19 @@
 "use client";
 
 import React from "react";
-import { Moon, Sun } from "lucide-react";
+import { ArrowRight, Moon, Sun } from "lucide-react";
 import Text from "../components/ui/Text";
 import GlassSurface from "../components/ui/GlassSurface";
 import DraggableSvg from "../components/ui/DraggableSvg";
 
-const Navbar = ({ isDarkMode, containerRef }) => {
+const Navbar = ({ containerRef }) => {
   return (
-    <nav className="fixed top-0 w-full z-[1000] px-4 md:px-8 lg:px-16 py-2 md:py-4">
+    <nav className="fixed top-0 w-full z-1000 px-4 md:px-8 lg:px-16 py-2 md:py-4">
       <GlassSurface
         width={"100%"}
         height={"auto"}
         borderRadius={50}
-        className="mx-auto backdrop-blur-2xl border p-3 md:p-4 rounded-[1.5rem] md:rounded-[2rem] transition-all bg-black/5 border-black/10 max-w-7xl py-0"
+        className="mx-auto backdrop-blur-2xl border p-3 md:p-4 rounded-1.5rem md:rounded-2rem transition-all bg-black/5 border-black/10 max-w-7xl py-0"
         saturation={0}
         Displace={50}
         Blur={"100px"}
@@ -21,7 +21,7 @@ const Navbar = ({ isDarkMode, containerRef }) => {
       >
         <div className="flex justify-between items-center w-full">
           <div className="text-lg md:text-2xl font-black tracking-tighter flex items-center gap-2">
-            <DraggableSvg isDarkMode={isDarkMode} containerRef={containerRef} />
+            <DraggableSvg containerRef={containerRef} />
             <Text
               as="span"
               variant="heading3"
@@ -41,9 +41,10 @@ const Navbar = ({ isDarkMode, containerRef }) => {
             </div>
             <a
               href="#projects"
-              className={`px-5 md:px-6 py-2 md:py-2.5 rounded-full text-xs md:text-sm font-semibold tracking-wide transition-all hover:scale-105 bg-black text-white hover:bg-blue-600`}
+              className={`flex justify-center items-center align-middle gap-1 px-5 md:px-6 py-2 md:py-2.5 rounded-full text-xs md:text-sm font-semibold tracking-wide transition-all hover:scale-105 bg-blue-600 text-neutral-50 hover:bg-blue-500`}
             >
               Projects
+              <ArrowRight className="w-3 h-3 md:w-5 md:h-5 text-neutral-50" />
             </a>
           </div>
         </div>

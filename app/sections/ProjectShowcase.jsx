@@ -219,7 +219,7 @@ export default function ProjectShowcase() {
     <Sectioncontainer
       containerRef={containerRef}
       title="Projects"
-      id="projects"
+      sectionId="projects"
     >
       {/* Project Rows */}
       <div
@@ -273,7 +273,8 @@ export default function ProjectShowcase() {
                 </div>
                 {/* OverlapImage Area (1 column) */}
                 <div
-                  className={`hidden md:flex md:col-span-1 items-center justify-center w-full transition-all duration-500 transform opacity-100 scale-100 pointer-events-none `}
+                  className={`hidden md:flex md:col-span-1 items-center justify-center w-full transition-all duration-500 transform ${isActive ? "opacity-100 scale-100" : "opacity-0 scale-90 pointer-events-none"}`}
+                // className={`hidden md:flex md:col-span-1 items-center justify-center w-full transition-all duration-500 transform  opacity-100 scale-100 pointer-events-none`}
                 >
                   <OverlapImage
                     imgs={project.overlapImgs}
@@ -296,7 +297,3 @@ export default function ProjectShowcase() {
     </Sectioncontainer>
   );
 }
-// {/* OverlapImage for the project */ }
-// <div className="absolute right-0 w-w-1/2 md:w-1/2 lg:w-1/2 min-h-min flex items-center justify-left">
-//   <OverlapImage imgs={project.overlapImgs} />
-// </div>

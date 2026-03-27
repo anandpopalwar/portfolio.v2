@@ -10,7 +10,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
 gsap.registerPlugin(ScrollTrigger);
 
-export default function Hero({ isDarkMode }) {
+export default function Hero() {
   const parallaxRef = useRef(null);
 
   useGSAP(() => {
@@ -73,7 +73,7 @@ export default function Hero({ isDarkMode }) {
             <div className="flex w-full flex-wrap items-center justify-center md:justify-end gap-4 md:gap-6 mb-8 md:mb-10">
               <a
                 href="#contact"
-                className=" relative flex items-center justify-center overflow-hidden rounded-full border border-white/10 bg-white/5 px-6 py-3 font-bold transition-all duration-300 text-neutral-900 hover:bg-blue-600 hover:text-white md:px-8 md:py-4 backdrop-blur-md hidden sm:flex"
+                className=" relative flex items-center justify-center overflow-hidden rounded-full border border-white/10 bg-white/5 px-6 py-3 font-bold transition-all duration-300 text-neutral-900 hover:underline hover:underline-offset-4 md:px-8 md:py-4 backdrop-blur-md sm:flex"
               >
                 <span className="flex items-center gap-2 transition-transform duration-300  ">
                   Say Hi 👋
@@ -81,7 +81,7 @@ export default function Hero({ isDarkMode }) {
               </a>
               <a
                 href="#projects"
-                className="flex items-center gap-2 bg-blue-600 hover:bg-blue-500 text-neutral-50 px-6 md:px-8 py-3 md:py-4 rounded-full font-bold transition-all "
+                className="flex items-center gap-2 bg-blue-600 hover:bg-blue-500 hover:scale-105 text-neutral-50 px-6 md:px-8 py-3 md:py-4 rounded-full font-bold transition-all "
               >
                 View Projects{" "}
                 <ArrowRight className="w-4 h-4 md:w-5 md:h-5 text-neutral-50" />

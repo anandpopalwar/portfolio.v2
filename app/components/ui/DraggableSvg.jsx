@@ -92,7 +92,6 @@ export default function DraggableSvg({ containerRef }) {
         rotation: "+=720",
         ease: "none",
       });
-
     },
     { scope: containerRef },
   );
