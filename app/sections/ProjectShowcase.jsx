@@ -273,7 +273,7 @@ export default function ProjectShowcase() {
                 </div>
                 {/* OverlapImage Area (1 column) */}
                 <div
-                  className={`hidden md:flex md:col-span-1 items-center justify-center w-full transition-all duration-500 transform ${isActive ? "opacity-100 scale-100" : "opacity-0 scale-90 pointer-events-none"}`}
+                  className={`hidden md:flex md:col-span-1 items-center justify-center w-full transition-all duration-500 transform opacity-100 scale-100 pointer-events-none `}
                 >
                   <OverlapImage
                     imgs={project.overlapImgs}

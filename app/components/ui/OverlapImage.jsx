@@ -58,8 +58,7 @@ const OverlapImage = ({ imgs, isActive, accentColor = "#2563eb" }) => {
           return (
             <div
               key={index}
-              className={`sticker w-28 h-28 sm:w-28 sm:h-28 md:w-40 md:h-40 rounded-2xl overflow-hidden border-none ${isActive ? "active" : ""
-                }`}
+              className={`sticker w-28 h-28 sm:w-28 sm:h-28 md:w-40 md:h-40 rounded-2xl overflow-hidden border-none active `}
               style={{
                 transform: `translateX(${xOffset}px)`,
                 zIndex: index,
