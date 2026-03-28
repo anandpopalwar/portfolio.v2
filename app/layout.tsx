@@ -45,34 +45,31 @@ export const metadata: Metadata = {
   creator: "Anand Popalwar",
   openGraph: {
     type: "website",
-    locale: "en_US",
-    // // Replace with your actual domain
-    // url: "https://yourportfolio.com",
+    locale: "en_US", 
+    url: "https://anandpopalwar-portfolio-v2.vercel.app",
     title: "Anand Popalwar | Fullstack Developer Ex easemyai",
     description:
       "Reduced initial bundle load times by 97% and led frontend architecture for AI-integrated enterprise dashboards at ex easemyai.",
     siteName: "Anand Popalwar Portfolio",
     images: [
-      {
-        // url: "/opengraph-image.png",
+      { 
         url: "/opengraph-image.png",
         width: 1200,
         height: 630,
         alt: "Anand Popalwar Portfolio - Fullstack Developer Ex easemyai",
       },
     ],
-  },
-  //replace
+  }, 
   alternates: {
-    canonical: "https://anandpopalwar.com", // Essential for SEO
+    canonical: "https://anandpopalwar-portfolio-v2.vercel.app", // Essential for SEO
   },
-  // twitter: {
-  //   card: "summary_large_image",
-  //   title: "Anand Popalwar | Fullstack Developer",
-  //   description:
-  //     "Building high-performance, Al-integrated enterprise systems Ex easemyai",
-  //   images: ["/opengraph-image.png"],
-  // },
+  twitter: {
+    card: "summary_large_image",
+    title: "Anand Popalwar | Fullstack Developer",
+    description:
+      "Building high-performance, Al-integrated enterprise systems Ex easemyai",
+    images: ["/opengraph-image.png"],
+  },
 };
 export default function RootLayout({
   children,
@@ -93,9 +90,8 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "Person",
               name: "Anand Popalwar",
-              jobTitle: "Fullstack Developer",
-              //replace
-              url: "https://anandpopalwar.com",
+              jobTitle: "Fullstack Developer", 
+              url: "https://anandpopalwar-portfolio-v2.vercel.app",
               sameAs: [
                 "https://www.linkedin.com/in/anandpopalwar",
                 "https://github.com/anandpopalwar",
@@ -125,9 +121,8 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "WebSite",
-              name: "Anand Popalwar Portfolio",
-              //replace
-              url: "https://anandpopalwar.com",
+              name: "Anand Popalwar Portfolio", 
+              url: "https://anandpopalwar-portfolio-v2.vercel.app",
               description:
                 "Portfolio of Anand Popalwar — Fullstack Developer specializing in real-time AI dashboards and enterprise web architecture.",
               author: {
@@ -137,7 +132,7 @@ export default function RootLayout({
               potentialAction: {
                 "@type": "SearchAction",
                 target:
-                  "https://www.google.com/search?q=site:anandpopalwar.com+{search_term_string}",
+                  "https://www.google.com/search?q=site:anandpopalwar-portfolio-v2.vercel.app+{search_term_string}",
                 "query-input": "required name=search_term_string",
               },
             }),

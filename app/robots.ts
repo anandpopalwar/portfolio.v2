@@ -8,7 +8,6 @@ export default function robots(): MetadataRoute.Robots {
       // Disallow private or draft folders if you have them
       disallow: ["/private/", "/api/"],
     },
-    // Replace
-    sitemap: "https://anandpopalwar.com/sitemap.xml",
+    sitemap: "https://anandpopalwar-portfolio-v2.vercel.app/sitemap.xml",
   };
 }
