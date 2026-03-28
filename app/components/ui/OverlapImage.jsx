@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 
-const OverlapImage = ({ imgs, isActive, accentColor = "#2563eb" }) => {
+const OverlapImage = ({ imgs, isActive }) => {
   if (!imgs || !Array.isArray(imgs) || imgs.length === 0) return null;
 
   return (

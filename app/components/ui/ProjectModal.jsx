@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useCallback } from "react";
 import { createPortal } from "react-dom";
 import { gsap } from "gsap";
 import TechChip from "./Techchip";
@@ -12,14 +12,13 @@ const ProjectModal = ({ project, onClose }) => {
   const contentRef = useRef(null);
   const itemsRef = useRef([]);
   const cursorRef = useRef(null);
-  const marqueeTweens = useRef([]);
   const containerRefs = useRef([]);
   const rowRefs = useRef([]);
 
   // Split tags into two rows for independent marquees
   const firstRowTags = project.tags;
 
-  const closeAnimation = () => {
+  const closeAnimation = useCallback(() => {
     if (!gsap) {
       onClose();
       return;
@@ -45,7 +44,7 @@ const ProjectModal = ({ project, onClose }) => {
       },
       "<0.1",
     );
-  };
+  }, [onClose]);
 
   useEffect(() => {
     // Custom cursor tracking for desktop close button
@@ -138,7 +137,7 @@ const ProjectModal = ({ project, onClose }) => {
       document.body.style.overflow = "";
       window.removeEventListener("keydown", handleEsc);
     };
-  }, []);
+  }, [closeAnimation]);
 
   if (!project) return null;
 
@@ -210,14 +209,14 @@ const ProjectModal = ({ project, onClose }) => {
         <div className="px-8 pb-8 sm:px-12 sm:pb-12 pt-10 sm:pt-12 flex-1 overflow-y-auto custom-scrollbar">
           {/* Title */}
           <h3
-            ref={(el) => (itemsRef.current[0] = el)}
+            ref={(el) => { itemsRef.current[0] = el; }}
             className="text-neutral-900 font-sans text-h2 sm:text-h2 md:text-h1 lg:text-[3rem] font-semibold tracking-tighter transition-colors duration-500 select-none truncate mt-0 mb-1 leading-tight"
           // style={{ fontFamily: "'Inter', sans-serif", opacity: 0 }}
           >
             {project.title}
           </h3>
           <div
-            ref={(el) => (itemsRef.current[1] = el)}
+            ref={(el) => { itemsRef.current[1] = el; }}
             className="tracking-normal transition-colors duration-500 text-[10px] sm:text-xs md:text-sm w-fit pointer-events-none flex justify-center align-middle items-center gap-2 border border-neutral-800 bg-neutral-800  text-neutral-50 px-3 pt-1 pb-0.5 sm:px-4 sm:pt-1 sm:pb-0.5  font-semibold rounded-full cursor-default select-none whitespace-nowrap group mt-1 mb-1"
             style={{ fontFamily: "'Google Sans Code', monospace" }}
           >
@@ -226,17 +225,17 @@ const ProjectModal = ({ project, onClose }) => {
 
           {/* Tech Chip Marquee */}
           <div
-            ref={(el) => (itemsRef.current[2] = el)}
+            ref={(el) => { itemsRef.current[2] = el; }}
             className="flex flex-col overflow-hidden mt-1"
             style={{ opacity: 0 }}
           >
             {/* First Row Marquee */}
             <div
-              ref={(el) => (containerRefs.current[0] = el)}
+              ref={(el) => { containerRefs.current[0] = el; }}
               className="marquee-row overflow-hidden h-fit  p-2 px-0"
             >
               <div
-                ref={(el) => (rowRefs.current[0] = el)}
+                ref={(el) => { rowRefs.current[0] = el; }}
                 className="marquee-content flex flex-wrap gap-2 sm:gap-3 "
               >
                 {firstRowTags.map((tag, idx) => (
@@ -248,7 +247,7 @@ const ProjectModal = ({ project, onClose }) => {
 
           {/* Bullet List */}
           <ul
-            ref={(el) => (itemsRef.current[3] = el)}
+            ref={(el) => { itemsRef.current[3] = el; }}
             className="space-y-5 pl-5 list-outside   pt-8"
             style={{ opacity: 0 }}
           >
@@ -266,7 +265,7 @@ const ProjectModal = ({ project, onClose }) => {
           {/* Primary Buttons */}
           {/* Unified Modal Close Button */}
           <button
-            ref={(el) => (itemsRef.current[4] = el)}
+            ref={(el) => { itemsRef.current[4] = el; }}
             onClick={closeAnimation}
             className="flex md:hidden mx-auto mt-12 mb-4 items-center justify-center   p-3 md:p-2  cursor-pointer text-neutral-50 bg-neutral-1000 border border-neutral-50 text-label rounded-full font-semibold uppercase tracking-widest  md:text-xs transition-colors duration-300 focus:outline-none shadow-[0_8px_30px_-5px_rgba(0,0,0,0.15)]"
             style={{ opacity: 0 }}
