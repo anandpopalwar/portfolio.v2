@@ -1,14 +1,14 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Google_Sans_Code, Google_Sans_Flex } from "next/font/google";
 import "./globals.css";
 // import opengraph from "@/app/opengraph-image.jpeg"
-
 
 const googleSansFlex = Google_Sans_Flex({
   subsets: ["latin"],
   axes: ["wdth"],
   variable: "--font-sans",
   display: "swap",
+  preload: true, // Ensure this is true for core branding fonts
 });
 
 const googleSansCode = Google_Sans_Code({
@@ -16,6 +16,13 @@ const googleSansCode = Google_Sans_Code({
   variable: "--font-code",
   display: "swap",
 });
+
+// Separate Viewport for Next.js 14/15 standards
+export const viewport: Viewport = {
+  themeColor: "#000000",
+  width: "device-width",
+  initialScale: 1,
+};
 
 export const metadata: Metadata = {
   title: {
@@ -39,7 +46,8 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    // url: "https://yourportfolio.com", // Replace with your actual domain
+    // // Replace with your actual domain
+    // url: "https://yourportfolio.com",
     title: "Anand Popalwar | Fullstack Developer Ex easemyai",
     description:
       "Reduced initial bundle load times by 97% and led frontend architecture for AI-integrated enterprise dashboards at ex easemyai.",
@@ -53,6 +61,10 @@ export const metadata: Metadata = {
         alt: "Anand Popalwar Portfolio - Fullstack Developer Ex easemyai",
       },
     ],
+  },
+  //replace
+  alternates: {
+    canonical: "https://anandpopalwar.com", // Essential for SEO
   },
   // twitter: {
   //   card: "summary_large_image",
@@ -71,8 +83,9 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${googleSansFlex.variable} ${googleSansCode.variable}`}
+      suppressHydrationWarning
     >
-      <body className="font-sans antialiased" cz-shortcut-listen="true">
+      <body className="font-sans antialiased selection:bg-blue-500 selection:text-neutral-50">
         {children}
       </body>
     </html>
