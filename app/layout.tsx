@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Google_Sans_Code, Google_Sans_Flex } from "next/font/google";
 import "./globals.css";
+// import opengraph from "@/app/opengraph-image.jpeg"
+
 
 const googleSansFlex = Google_Sans_Flex({
   subsets: ["latin"],
@@ -16,10 +18,50 @@ const googleSansCode = Google_Sans_Code({
 });
 
 export const metadata: Metadata = {
-  title: "Anand Popalwar Portfolio",
-  description: "Interactive portfolio with GSAP, Matter.js, and Three.js.",
+  title: {
+    default: "Anand Popalwar | Fullstack Developer",
+    template: "%s | Anand Popalwar",
+  },
+  description:
+    "Fullstack Developer with 2+ years of experience at Ease My AI, specializing in real-time AI dashboards, WebSockets, and high-performance UI architecture.",
+  keywords: [
+    "Anand Popalwar",
+    "Ease My AI Frontend Developer",
+    "Fullstack Developer Navi Mumbai",
+    "React AI Dashboard Expert",
+    "Next.js Performance Optimization",
+    "Enterprise WebSocket Integration",
+    "RBAC Architecture",
+    "Real-time Monitoring Systems",
+  ],
+  authors: [{ name: "Anand Popalwar" }],
+  creator: "Anand Popalwar",
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    // url: "https://yourportfolio.com", // Replace with your actual domain
+    title: "Anand Popalwar | Fullstack Developer Ex easemyai",
+    description:
+      "Reduced initial bundle load times by 97% and led frontend architecture for AI-integrated enterprise dashboards at ex easemyai.",
+    siteName: "Anand Popalwar Portfolio",
+    images: [
+      {
+        // url: "/opengraph-image.png",
+        url: "/opengraph-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Anand Popalwar Portfolio - Fullstack Developer Ex easemyai",
+      },
+    ],
+  },
+  // twitter: {
+  //   card: "summary_large_image",
+  //   title: "Anand Popalwar | Fullstack Developer",
+  //   description:
+  //     "Building high-performance, Al-integrated enterprise systems Ex easemyai",
+  //   images: ["/opengraph-image.png"],
+  // },
 };
-
 export default function RootLayout({
   children,
 }: Readonly<{

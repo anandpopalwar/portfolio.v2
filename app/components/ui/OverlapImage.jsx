@@ -7,43 +7,12 @@ const OverlapImage = ({ imgs, isActive, accentColor = "#2563eb" }) => {
 
   return (
     <div className="relative w-full h-min min-h-min flex items-center justify-center py-0 bg-transparent transition-colors duration-500">
-      <style>
-        {`
-        .sticker-container {
-          perspective: 1200px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          position: relative;
-          width: 100%;
-          // height: 250px;
-        }
-
-        .sticker {
-          position: absolute;
-          bottom: 0px;
-          transition: all var(--duration) var(--spring-easing);
-          transition-delay: var(--delay);
-          cursor: pointer;
-          will-change: transform; 
-        }
-
-        .sticker:hover {
-          // filter: brightness(1.05);
-        }
-
-        .sticker img {
-          transition: transform 0.5s ease;
-        }
-        `}
-      </style>
-
       <div className="sticker-container h-min">
         {imgs.map((img, index) => {
           const middle = (imgs.length - 1) / 2;
 
           const spread = 100;
-          const xOffset = (index - middle) * spread
+          const xOffset = (index - middle) * spread;
 
           // Now controlled by external isActive prop
           const yOffset = isActive ? 70 : 150;
@@ -68,9 +37,12 @@ const OverlapImage = ({ imgs, isActive, accentColor = "#2563eb" }) => {
                 "--delay": `${delay}s`,
                 transform: `translateX(${xOffset}px) translateY(${yOffset}px) rotate(${rotation}deg)`,
                 zIndex: 10 + Math.round(10 - Math.abs(index - middle)),
+                willChange: isActive ? "transform" : "auto",
               }}
             >
               <Image
+                width={"100%"}
+                height={"100%"}
                 src={img}
                 alt={`Sticker ${index + 1}`}
                 className={`w-full h-full object-contain grayscale  ${isActive ? "scale-105" : "scale-100"}`}

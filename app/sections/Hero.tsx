@@ -36,6 +36,7 @@ export default function Hero() {
             className="w-full max-w-[500px] md:max-w-[700px]"
           >
             <Image
+            priority
               src={self}
               alt="Anand Popalwar"
               draggable={false}
@@ -49,7 +50,7 @@ export default function Hero() {
           <div className="flex flex-col items-start md:items-end max-w-3xl w-full">
             {/* Massive Responsive Typography */}
             <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-[6rem] xl:text-[7rem] font-bold leading-[0.85] tracking-tighter mb-4 md:mb-5 select-none text-neutral-900">
-              MERN Dev
+              MERN Developer
             </h1>
 
             {/* Tagline */}

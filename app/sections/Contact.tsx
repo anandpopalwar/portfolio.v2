@@ -35,9 +35,9 @@ export default function Contact() {
       headerAlignment="center"
     >
       <div className="max-w-7xl mx-auto  z-10 flex flex-col gap-4 pb-8">
-        <span className="text-sm sm:text-base font-medium text-code tracking-tight text-neutral-600 text-center">
-          Reach me
-        </span>
+        {/* <span className="text-sm sm:text-base font-medium text-code tracking-tight text-neutral-600 text-center">
+          Coffee ?
+        </span> */}
 
         {/* Social Icons Grid */}
         <div className="flex gap-4 sm:gap-6 w-full justify-center">

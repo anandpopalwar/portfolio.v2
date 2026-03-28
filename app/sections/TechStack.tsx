@@ -306,7 +306,7 @@ function ServiceRow() {
               ref={(el) => {
                 tagRefs.current[i] = el;
               }}
-              className="absolute top-0 left-0 flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-white/20 bg-[#1a1a1a] text-[#f0f0f0] text-code whitespace-nowrap opacity-0 animate-[fadeIn_0.3s_ease_forwards] will-change-transform cursor-grab active:cursor-grabbing select-none"
+              className="absolute top-0 left-0 flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-neutral-50/20 text-neutral-50 bg-neutral-900 text-code whitespace-nowrap opacity-0 animate-[fadeIn_0.3s_ease_forwards] will-change-transform cursor-grab active:cursor-grabbing select-none"
               style={{ animationDelay: `${i * 60}ms` }}
             >
               <span className="w-4 h-4 shrink-0 pointer-events-none">
