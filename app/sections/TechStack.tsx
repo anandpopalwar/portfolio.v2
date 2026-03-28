@@ -1,95 +1,8 @@
 "use client";
 
-import React, { useRef, useEffect, useCallback, useState } from "react";
+import { useRef, useEffect, useCallback, useState } from "react";
 import Matter from "matter-js";
-import Text from "../components/ui/Text";
-import StackIcon from "tech-stack-icons";
-import { Globe, Wifi } from "lucide-react";
-import { GitHub } from "@deemlol/next-icons";
-
-export const skills = [
-  {
-    name: "Node.js",
-    icon: <StackIcon name="nodejs" className="text-code" variant="dark" />,
-    color: "text-[#339933] border-[#339933]/30 hover:shadow-[#339933]/30",
-  },
-  {
-    name: "Next.js",
-    icon: <StackIcon name="nextjs" className="text-code" variant="dark" />,
-    color: "text-[#FF6C37] border-white/30 hover:shadow-white/30",
-  },
-  {
-    name: "Express.js",
-    icon: <StackIcon name="expressjs" className="text-code" variant="dark" />,
-    color: "text-[#FF6C37] border-gray-400/30 hover:shadow-gray-400/30",
-  },
-  {
-    name: "GSAP",
-    icon: <StackIcon name="gsap" className="text-code" variant="dark" />,
-    color: "text-[#FF6C37] border-gray-400/30 hover:shadow-gray-400/30",
-  },
-
-  {
-    name: "React.js",
-    icon: <StackIcon name="react" className="text-code" variant="dark" />,
-    color: "text-[#61DAFB] border-[#61DAFB]/30 hover:shadow-[#61DAFB]/30",
-  },
-  {
-    name: "TypeScript",
-    icon: <StackIcon name="typescript" className="text-code" variant="dark" />,
-    color: "text-[#3178C6] border-[#3178C6]/30 hover:shadow-[#3178C6]/30",
-  },
-  {
-    name: "JavaScript",
-    icon: <StackIcon name="js" className="text-code" variant="dark" />,
-    color: "text-[#F7DF1E] border-[#F7DF1E]/30 hover:shadow-[#F7DF1E]/30",
-  },
-  {
-    name: "MongoDB",
-    icon: <StackIcon name="mongodb" className="text-code" variant="dark" />,
-    color: "text-[#47A248] border-[#47A248]/30 hover:shadow-[#47A248]/30",
-  },
-  {
-    name: "Git",
-    icon: <StackIcon name="git" className="text-code" variant="dark" />,
-    color: "text-[#F05032] border-[#F05032]/30 hover:shadow-[#F05032]/30",
-  },
-  {
-    name: "Tailwind",
-    icon: <StackIcon name="tailwindcss" className="text-code" variant="dark" />,
-    color: "text-[#06B6D4] border-[#06B6D4]/30 hover:shadow-[#06B6D4]/30",
-  },
-  {
-    name: "Socket.io",
-    icon: <StackIcon name="socketio" className="text-code" variant="dark" />,
-    color: "text-[#06B6D4] border-[#06B6D4]/30 hover:shadow-[#06B6D4]/30",
-  },
-  {
-    name: "Docker",
-    icon: <StackIcon name="docker" className="text-code" variant="dark" />,
-    color: "text-[#2496ED] border-[#2496ED]/30 hover:shadow-[#2496ED]/30",
-  },
-  {
-    name: "WebSockets",
-    icon: <Wifi className="w-4 h-4" variant="dark" />,
-    color: "text-purple-400 border-purple-400/30 hover:shadow-purple-400/30",
-  },
-  {
-    name: "Redux",
-    icon: <StackIcon name="redux" className="text-code" variant="dark" />,
-    color: "text-[#764ABC] border-[#764ABC]/30 hover:shadow-[#764ABC]/30",
-  },
-  {
-    name: "Github",
-    icon: <GitHub name="github" className="w-4 h-4" variant="dark" />,
-    color: "text-[#764ABC] border-[#764ABC]/30 hover:shadow-[#764ABC]/30",
-  },
-  {
-    name: "REST APIs",
-    icon: <Globe className="w-4 h-4" variant="dark" />,
-    color: "text-[#FF6C37] border-[#FF6C37]/30 hover:shadow-[#FF6C37]/30",
-  },
-];
+import { skills } from "../contents/skills";
 
 // Collision category for tag bodies only (walls/floor stay at default 0x0001)
 const TAG_CATEGORY = 0x0002;
@@ -102,17 +15,17 @@ const TAG_CATEGORY = 0x0002;
 // ServiceRow
 // ---------------------------------------------------------------------------
 function ServiceRow() {
-  const sectionRef = useRef(null);
-  const titleRef = useRef(null);
-  const dropZoneRef = useRef(null);
+  const sectionRef = useRef<HTMLElement | null>(null);
+  const titleRef = useRef<HTMLHeadingElement | null>(null);
+  const dropZoneRef = useRef<HTMLDivElement | null>(null);
 
-  const engineRef = useRef(null);
-  const tagRefs = useRef([]);
-  const tagBodiesRef = useRef([]);
-  const rafIdRef = useRef(null);
+  const engineRef = useRef<Matter.Engine | null>(null);
+  const tagRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const tagBodiesRef = useRef<Matter.Body[]>([]);
+  const rafIdRef = useRef<number | null>(null);
   const hasPlayedRef = useRef(false);
-  const mouseConstraintRef = useRef(null);
-  const dragDelayTimerRef = useRef(null);
+  const mouseConstraintRef = useRef<Matter.MouseConstraint | null>(null);
+  const dragDelayTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const [showTags, setShowTags] = useState(false);
 
@@ -227,14 +140,15 @@ function ServiceRow() {
     dragDelayTimerRef.current = setTimeout(() => {
       if (!engineRef.current || !dropZoneRef.current) return;
 
-      const mouse = Matter.Mouse.create(dropZoneRef.current);
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const mouse: any = Matter.Mouse.create(dropZoneRef.current!);
       mouse.pixelRatio = 1;
 
       // ------------------------------------------------------------------
       // Strip ALL of Matter.js's default event listeners — they call
       // preventDefault() unconditionally, which kills page scrolling.
       // ------------------------------------------------------------------
-      const el = mouse.element;
+      const el = mouse.element as HTMLElement;
       el.removeEventListener("mousewheel", mouse.mousewheel);
       el.removeEventListener("DOMMouseScroll", mouse.mousewheel);
       el.removeEventListener("mousedown", mouse.mousedown);
@@ -247,15 +161,15 @@ function ServiceRow() {
       // ------------------------------------------------------------------
       // Re-bind custom handlers: only preventDefault when grabbing a body
       // ------------------------------------------------------------------
-      const getPoint = (e) => {
+      const getPoint = (e: MouseEvent | TouchEvent) => {
         const rect = el.getBoundingClientRect();
-        const src = e.touches ? e.touches[0] : e;
-        return { x: src.clientX - rect.left, y: src.clientY - rect.top };
+        const src = e instanceof TouchEvent ? e.touches[0] : e;
+        return { x: src!.clientX - rect.left, y: src!.clientY - rect.top };
       };
 
-      const isOverBody = (pt) => {
+      const isOverBody = (pt: { x: number; y: number }) => {
         const bodies = Matter.Composite.allBodies(
-          engineRef.current.world,
+          engineRef.current!.world,
         ).filter((b) => !b.isStatic);
         return Matter.Query.point(bodies, pt).length > 0;
       };
@@ -308,19 +222,22 @@ function ServiceRow() {
         { passive: true },
       );
 
-      const mouseConstraint = Matter.MouseConstraint.create(engineRef.current, {
-        mouse: mouse,
-        constraint: {
-          stiffness: 0.2,
-          damping: 0.1,
-          render: { visible: false },
+      const mouseConstraint = Matter.MouseConstraint.create(
+        engineRef.current!,
+        {
+          mouse: mouse,
+          constraint: {
+            stiffness: 0.2,
+            damping: 0.1,
+            render: { visible: false },
+          },
+          collisionFilter: {
+            mask: TAG_CATEGORY,
+          },
         },
-        collisionFilter: {
-          mask: TAG_CATEGORY,
-        },
-      });
+      );
 
-      Matter.Composite.add(engineRef.current.world, mouseConstraint);
+      Matter.Composite.add(engineRef.current!.world, mouseConstraint);
       mouseConstraintRef.current = mouseConstraint;
     }, dropDuration);
   }, []);
@@ -386,7 +303,9 @@ function ServiceRow() {
           skills.map((skill, i) => (
             <div
               key={i}
-              ref={(el) => (tagRefs.current[i] = el)}
+              ref={(el) => {
+                tagRefs.current[i] = el;
+              }}
               className="absolute top-0 left-0 flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-white/20 bg-[#1a1a1a] text-[#f0f0f0] text-code whitespace-nowrap opacity-0 animate-[fadeIn_0.3s_ease_forwards] will-change-transform cursor-grab active:cursor-grabbing select-none"
               style={{ animationDelay: `${i * 60}ms` }}
             >

@@ -2,7 +2,6 @@
 
 import { useRef } from "react";
 import { ArrowRight } from "lucide-react";
-// import self from "../assets/anand_crop.png";
 import self from "../assets/me.png";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
@@ -11,7 +10,7 @@ import Image from "next/image";
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Hero() {
-  const parallaxRef = useRef(null);
+  const parallaxRef = useRef<HTMLDivElement | null>(null);
 
   useGSAP(() => {
     gsap.to(parallaxRef.current, {
@@ -60,14 +59,6 @@ export default function Hero() {
               scalable web platforms. Led development of real-time vehicle
               tracking systems
             </span>
-            {/* <Text
-              variant="body"
-              as="p"
-              className="text-base md:text-xl font-medium md:w-2/3 text-neutral-600 opacity-90 mb-8 md:mb-10"
-            >
-              Specialized in building enterprise analytics dashboards and
-              scalable web platforms.
-            </Text> */}
 
             {/* CTA Buttons */}
             <div className="flex w-full flex-wrap items-center justify-center md:justify-end gap-4 md:gap-6 mb-8 md:mb-10">

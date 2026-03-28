@@ -4,12 +4,12 @@ type HeaderAlignment = "start" | "center" | "end";
 
 interface SectioncontainerProps {
   children: React.ReactNode;
-  containerRef?: React.RefObject<HTMLDivElement>;
+  containerRef?: React.RefObject<HTMLDivElement | null>;
   title: string;
   sectionId?: string;
   extraClassName?: string;
-  border:boolean
-  headerAlignment:HeaderAlignment
+  border?: boolean;
+  headerAlignment?: HeaderAlignment;
 }
 
 const Sectioncontainer = ({

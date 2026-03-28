@@ -1,4 +1,6 @@
-import { useEffect, useLayoutEffect, useRef } from "react";
+"use client"
+
+import { useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
 import { gsap } from "gsap";
 import TechChip from "./Techchip";
@@ -138,42 +140,6 @@ const ProjectModal = ({ project, onClose }) => {
     };
   }, []);
 
-  // useLayoutEffect(() => {
-  //   const setupBoundedAnimation = (index) => {
-  //     const container = containerRefs.current[index];
-  //     const row = rowRefs.current[index];
-  //     if (!container || !row) return;
-
-  //     const containerWidth = container.offsetWidth;
-  //     const contentWidth = row.scrollWidth;
-  //     const maxTranslate = contentWidth - containerWidth;
-
-  //     if (maxTranslate <= 0) return; // No animation needed if content fits
-
-  //     const startX = -maxTranslate / 2; // Center content initially
-  //     const isFirstRow = index === 0;
-  //     const targetX = isFirstRow ? 0 : -maxTranslate;
-
-  //     marqueeTweens.current[index] = gsap.fromTo(
-  //       row,
-  //       { x: startX },
-  //       {
-  //         x: targetX,
-  //         duration: 20,
-  //         ease: "none",
-  //         repeat: -1,
-  //         yoyo: true,
-  //       },
-  //     );
-  //   };
-
-  //   [0, 1].forEach(setupBoundedAnimation);
-
-  //   return () => {
-  //     marqueeTweens.current.forEach((tween) => tween?.kill());
-  //   };
-  // }, [project]);
-
   if (!project) return null;
 
   return createPortal(
@@ -233,7 +199,7 @@ const ProjectModal = ({ project, onClose }) => {
         <div className="w-full flex justify-end p-6 pb-0 shrink-0 hidden">
           <button
             onClick={closeAnimation}
-            className="w-10 h-10 sm:w-12 sm:h-12 bg-neutral-50 hover:bg-[#050505] border border-neutral-200 hover:border-[#050505] rounded-full flex items-center justify-center text-[#050505] hover:text-neutral-50 transition-colors duration-300 shadow-sm"
+            className="w-10 h-10 sm:w-12 sm:h-12 bg-neutral-50 hover:bg-neutral-950 border border-neutral-200 hover:border-neutral-950 rounded-full flex items-center justify-center text-neutral-900 hover:text-neutral-50 transition-colors duration-300 shadow-sm"
             aria-label="Close modal"
           >
             <X className="w-5 h-5 sm:w-6 sm:h-6" />
