@@ -55,7 +55,7 @@ export default function Hero() {
 
             {/* Tagline */}
 
-            <span className="w-3/4 transition-opacity duration-500 text-[16px] text-neutral-700 tracking-normal font-medium leading-[1.65] line-clamp-2 mb-8 md:mb-10 mt-6 md:mt-6">
+            <span className="w-full md:w-3/4 transition-opacity duration-500 text-[14px] md:text-[16px]  text-neutral-700 tracking-normal font-medium leading-[1.65] line-clamp-2 mb-8 md:mb-10 mt-6 md:mt-6">
               Specialized in building enterprise analytics dashboards and
               scalable web platforms. Led development of real-time vehicle
               tracking systems
