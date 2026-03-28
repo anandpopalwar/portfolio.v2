@@ -7,7 +7,10 @@ import DraggableSvg from "../components/ui/DraggableSvg";
 
 const Navbar = ({ containerRef }) => {
   return (
-    <nav className="fixed top-0 w-full z-1000 px-4 md:px-8 lg:px-16 py-2 md:py-4">
+    <nav
+      className="fixed top-0 w-full z-1000 px-4 md:px-8 lg:px-16 py-2 md:py-4"
+      aria-label="Primary navigation"
+    >
       <GlassSurface
         width={"100%"}
         height={"auto"}

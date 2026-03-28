@@ -283,15 +283,24 @@ function ServiceRow() {
       className="relative w-full min-h-[25vh] md:min-h-[25vh] pt-10 md:pt-20 px-4 md:px-6 pb-4 md:pb-10 flex flex-col items-center overflow-visible font-sans"
     >
       {["Skills", "& tech"].map((name) => (
-        <h1
+        <span
           ref={titleRef}
           key={name}
-          className="relative z-10 text-[56px] font-extrabold uppercase tracking-tight leading-none text-blue-600 px-4 select-none text-center"
-          style={{ fontFamily: "'Barlow Condensed', sans-serif" }}
+          aria-hidden="true"
+          className="relative z-10 text-[56px] font-extrabold uppercase font-stretch-110% font-sans tracking-tight leading-none text-blue-600 px-4 select-none text-center"
+          // style={{ fontFamily: "'Barlow Condensed', sans-serif" }}
         >
           {name}
-        </h1>
+        </span>
       ))}
+
+      {/* SEO: crawlable skills list, visually hidden */}
+      <h2 className="sr-only">Skills & Technologies</h2>
+      <ul className="sr-only">
+        {skills.map((skill) => (
+          <li key={skill.name}>{skill.name}</li>
+        ))}
+      </ul>
 
       {/* Drop zone — pointer-events-auto so MouseConstraint can detect clicks */}
       <div
@@ -302,14 +311,18 @@ function ServiceRow() {
         {showTags &&
           skills.map((skill, i) => (
             <div
-              key={i}
+              key={skill.name}
+              id={skill.name}
               ref={(el) => {
                 tagRefs.current[i] = el;
               }}
               className="absolute top-0 left-0 flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-neutral-50/20 text-neutral-50 bg-neutral-900 text-code whitespace-nowrap opacity-0 animate-[fadeIn_0.3s_ease_forwards] will-change-transform cursor-grab active:cursor-grabbing select-none"
               style={{ animationDelay: `${i * 60}ms` }}
             >
-              <span className="w-4 h-4 shrink-0 pointer-events-none">
+              <span
+                aria-hidden="true"
+                className="w-4 h-4 shrink-0 pointer-events-none"
+              >
                 {skill.icon}
               </span>
               <span className="font-mono  text-sm md:text-base leading-relaxed pointer-events-none pb-0.5 font-normal tracking-[0.04em] text-code">

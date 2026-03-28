@@ -8,12 +8,14 @@ import Sectioncontainer from "../components/ui/Sectioncontainer";
 import { SERVICES } from "../contents/projectcontent";
 
 export default function ProjectShowcase() {
-  const containerRef = useRef<HTMLDivElement|null>(null);
+  const containerRef = useRef<HTMLDivElement | null>(null);
   const titleRefs = useRef<HTMLHeadingElement[]>([]);
-  const rowRefs = useRef<HTMLDivElement[]>([]);
+  const rowRefs = useRef<(HTMLElement | null)[]>([]);
 
   const [activeIndex, setActiveIndex] = useState<number>(-1);
-  const [selectedProject, setSelectedProject] = useState<(typeof SERVICES)[number] | null>(null);
+  const [selectedProject, setSelectedProject] = useState<
+    (typeof SERVICES)[number] | null
+  >(null);
 
   useEffect(() => {
     if (!gsap) return;
@@ -54,7 +56,11 @@ export default function ProjectShowcase() {
       });
     };
 
-    const listeners: { row: HTMLDivElement; move: (e: MouseEvent) => void; leave: () => void }[] = [];
+    const listeners: {
+      row: HTMLElement;
+      move: (e: MouseEvent) => void;
+      leave: () => void;
+    }[] = [];
 
     rowRefs.current.forEach((row, i) => {
       if (!row) return;
@@ -72,7 +78,7 @@ export default function ProjectShowcase() {
           move,
           leave,
         }: {
-          row: HTMLDivElement;
+          row: HTMLElement;
           move: (e: MouseEvent) => void;
           leave: () => void;
         }) => {
@@ -113,12 +119,15 @@ export default function ProjectShowcase() {
           const isDimmed = activeIndex >= 0 && !isActive && !selectedProject;
 
           return (
-            <div
+            <article
               key={project.id}
-              ref={(el) => { if (el) rowRefs.current[i] = el; }}
+              ref={(el) => {
+                if (el) rowRefs.current[i] = el;
+              }}
               className={`border-b border-neutral-200 transition-all duration-500 hover:border-neutral-300 cursor-pointer`}
               onMouseEnter={() => handleRowEnter(i)}
               onClick={() => handleRowTap(i)}
+              role="button"
             >
               {/* Row Header */}
               <div
@@ -129,7 +138,9 @@ export default function ProjectShowcase() {
                 {/* Title and Content Area (2 columns) */}
                 <div className="md:col-span-2 flex flex-col gap-2 md:gap-3 justify-center min-w-0">
                   <h3
-                    ref={(el) => { if (el) titleRefs.current[i] = el; }}
+                    ref={(el) => {
+                      if (el) titleRefs.current[i] = el;
+                    }}
                     className={`${isActive ? "text-blue-600" : "text-neutral-900"} text-2xl sm:text-2xl md:text-3xl lg:text-[3.4rem] font-semibold tracking-tighter transition-colors duration-500 select-none truncate leading-relaxed`}
                     style={{
                       fontFamily: "'Inter', sans-serif",
@@ -149,9 +160,9 @@ export default function ProjectShowcase() {
                     </div>
                   </div>
                   {/* Description Highlights */}
-                  <span className="w-3/4 mt-2 space-y-1 md:space-y-1.5 transition-opacity duration-500 text-xs md:text-sm text-neutral-500 tracking-tight font-medium line-clamp-2">
+                  <p className="w-3/4 mt-2 space-y-1 md:space-y-1.5 transition-opacity duration-500 text-xs md:text-sm text-neutral-500 tracking-tight font-medium line-clamp-2">
                     {project?.tldr}
-                  </span>
+                  </p>
                 </div>
                 {/* OverlapImage Area (1 column) */}
                 <div
@@ -163,7 +174,7 @@ export default function ProjectShowcase() {
                   />
                 </div>
               </div>
-            </div>
+            </article>
           );
         })}
       </div>

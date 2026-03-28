@@ -6,7 +6,11 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import Footer, { REVEAL_HEIGHT } from "./Footer";
 import Navbar from "./Navbar";
-import Dither from "../components/ui/Dither";
+import dynamic from "next/dynamic";
+
+const Dither = dynamic(() => import("../components/ui/Dither"), {
+  ssr: false,
+});
 
 // Register ScrollTrigger only on the client side
 if (typeof window !== "undefined") {
@@ -40,7 +44,7 @@ const Pagewrapper = ({ children }: PageWrapperProps) => {
   );
 
   return (
-    <main
+    <div
       ref={containerRef}
       className={`min-h-screen font-sans transition-colors duration-700 bg-black text-black overflow-hidden`}
     >
@@ -70,7 +74,7 @@ const Pagewrapper = ({ children }: PageWrapperProps) => {
         />
         <Footer />
       </div>
-    </main>
+    </div>
   );
 };
 
