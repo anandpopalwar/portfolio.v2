@@ -24,51 +24,117 @@ export const viewport: Viewport = {
   initialScale: 1,
 };
 
+// export const metadata: Metadata = {
+//   title: {
+//     default: "Anand Popalwar | Fullstack Developer",
+//     template: "%s | Anand Popalwar",
+//   },
+//   description:
+//     "Fullstack Developer, specializing in real-time AI dashboards, WebSockets, and high-performance UI architecture.",
+//   keywords: [
+//     "Anand Popalwar",
+//     "Ease My AI Frontend Developer",
+//     "Fullstack Developer Navi Mumbai",
+//     "React AI Dashboard Expert",
+//     "Next.js Performance Optimization",
+//     "Enterprise WebSocket Integration",
+//     "RBAC Architecture",
+//     "Real-time Monitoring Systems",
+//   ],
+//   authors: [{ name: "Anand Popalwar" }],
+//   creator: "Anand Popalwar",
+//   openGraph: {
+//     type: "website",
+//     locale: "en_US",
+//     url: "https://www.anandpopalwar.in",
+//     title: "Anand Popalwar | Fullstack Developer Portfolio",
+//     description:
+//       "Fullstack Developer, specializing in real-time AI dashboards, WebSockets, and high-performance UI architecture.",
+
+//     siteName: "Anand Popalwar Portfolio",
+//     images: [
+//       {
+//         url: "/opengraph-image.png",
+//         width: 1200,
+//         height: 630,
+//         alt: "Anand Popalwar | Fullstack Developer Portfolio",
+//       },
+//     ],
+//   },
+//   alternates: {
+//     canonical: "https://anandpopalwar-portfolio-v2.vercel.app", // Essential for SEO
+//   },
+//   twitter: {
+//     card: "summary_large_image",
+//     title: "Anand Popalwar | Fullstack Developer",
+//     description:
+//       "Fullstack Developer, specializing in real-time AI dashboards, WebSockets, and high-performance UI architecture.",
+
+//     images: ["/opengraph-image.png"],
+//   },
+// };
+
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.anandpopalwar.in"),
   title: {
     default: "Anand Popalwar | Fullstack Developer",
     template: "%s | Anand Popalwar",
   },
+
   description:
-    "Fullstack Developer with 2+ years of experience at Ease My AI, specializing in real-time AI dashboards, WebSockets, and high-performance UI architecture.",
+    "Fullstack Developer specializing in real-time AI dashboards, WebSockets, and high-performance UI systems.",
+
   keywords: [
     "Anand Popalwar",
-    "Ease My AI Frontend Developer",
+    "anand",
+    "Anand",
+    "popalwar",
+    "Popalwar",
+    "Fullstack Developer Mumbai",
     "Fullstack Developer Navi Mumbai",
-    "React AI Dashboard Expert",
-    "Next.js Performance Optimization",
-    "Enterprise WebSocket Integration",
-    "RBAC Architecture",
-    "Real-time Monitoring Systems",
+    "React Developer India",
+    "Next.js Developer",
+    "Node.js Developer",
+    "Express.js Developer",
+    "AI Dashboard Developer",
+    "WebSocket Expert",
+    "Frontend Performance Optimization",
+    "Real-time Systems Engineer",
   ],
+
   authors: [{ name: "Anand Popalwar" }],
   creator: "Anand Popalwar",
+
+  alternates: {
+    canonical: "https://www.anandpopalwar.in",
+  },
+
   openGraph: {
     type: "website",
-    locale: "en_US", 
-    url: "https://anandpopalwar-portfolio-v2.vercel.app",
-    title: "Anand Popalwar | Fullstack Developer Ex easemyai",
-    description:
-      "Reduced initial bundle load times by 97% and led frontend architecture for AI-integrated enterprise dashboards at ex easemyai.",
+    locale: "en_US",
+    url: "https://www.anandpopalwar.in",
     siteName: "Anand Popalwar Portfolio",
+    title: "Anand Popalwar | Fullstack Developer Portfolio",
+    description:
+      "Fullstack Developer specializing in real-time AI dashboards, WebSockets, and high-performance UI systems.",
+
     images: [
-      { 
-        url: "/opengraph-image.png",
+      {
+        url: "/images/og/linkedin-og.jpg", // ✅ LinkedIn + WhatsApp will use this
         width: 1200,
         height: 630,
-        alt: "Anand Popalwar Portfolio - Fullstack Developer Ex easemyai",
+        alt: "Anand Popalwar portfolio preview",
       },
     ],
-  }, 
-  alternates: {
-    canonical: "https://anandpopalwar-portfolio-v2.vercel.app", // Essential for SEO
   },
   twitter: {
     card: "summary_large_image",
     title: "Anand Popalwar | Fullstack Developer",
     description:
-      "Building high-performance, Al-integrated enterprise systems Ex easemyai",
-    images: ["/opengraph-image.png"],
+      "Fullstack Developer specializing in real-time AI dashboards, WebSockets, and high-performance UI systems.",
+
+    images: ["/images/og/twitter-og.jpg"], // ✅ Twitter uses this
+    creator: "@FakeAnand", // optional but recommended
   },
 };
 export default function RootLayout({
@@ -90,8 +156,8 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "Person",
               name: "Anand Popalwar",
-              jobTitle: "Fullstack Developer", 
-              url: "https://anandpopalwar-portfolio-v2.vercel.app",
+              jobTitle: "Fullstack Developer",
+              url: "https://www.anandpopalwar.in",
               sameAs: [
                 "https://www.linkedin.com/in/anandpopalwar",
                 "https://github.com/anandpopalwar",
@@ -111,7 +177,7 @@ export default function RootLayout({
                 "Enterprise UI Architecture",
               ],
               description:
-                "Fullstack Developer with 2+ years of experience specializing in real-time AI dashboards, WebSockets, and high-performance UI architecture.",
+                "Fullstack Developer specializing in real-time AI dashboards, WebSockets, and high-performance UI systems.",
             }),
           }}
         />
@@ -121,10 +187,10 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "WebSite",
-              name: "Anand Popalwar Portfolio", 
-              url: "https://anandpopalwar-portfolio-v2.vercel.app",
+              name: "Anand Popalwar Portfolio",
+              url: "https://www.anandpopalwar.in",
               description:
-                "Portfolio of Anand Popalwar — Fullstack Developer specializing in real-time AI dashboards and enterprise web architecture.",
+                "Fullstack Developer specializing in real-time AI dashboards, WebSockets, and high-performance UI systems.",
               author: {
                 "@type": "Person",
                 name: "Anand Popalwar",
@@ -132,7 +198,7 @@ export default function RootLayout({
               potentialAction: {
                 "@type": "SearchAction",
                 target:
-                  "https://www.google.com/search?q=site:anandpopalwar-portfolio-v2.vercel.app+{search_term_string}",
+                  "https://www.google.com/search?q=site:anandpopalwar.in+{search_term_string}",
                 "query-input": "required name=search_term_string",
               },
             }),
