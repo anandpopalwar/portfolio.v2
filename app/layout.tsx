@@ -1,5 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Google_Sans_Code, Google_Sans_Flex } from "next/font/google";
+import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 // import opengraph from "@/app/opengraph-image.jpeg"
 
@@ -207,6 +209,8 @@ export default function RootLayout({
       </head>
       <body className="font-sans antialiased selection:bg-blue-500 selection:text-neutral-50">
         {children}
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
