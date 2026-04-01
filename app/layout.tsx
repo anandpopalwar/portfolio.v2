@@ -76,6 +76,7 @@ export const viewport: Viewport = {
 //   },
 // };
 
+
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.anandpopalwar.in"),
   title: {
@@ -83,6 +84,9 @@ export const metadata: Metadata = {
     template: "%s | Anand Popalwar",
   },
 
+  verification: {
+    google: 'im2NgZuTRpL3VPahdALARCKuKGBqjX6a3Vr5L4IUsWc',
+  },
   description:
     "Fullstack Developer specializing in real-time AI dashboards, WebSockets, and high-performance UI systems.",
 
